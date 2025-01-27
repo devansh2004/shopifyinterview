@@ -1,4 +1,4 @@
-
+import math
 
 class Product():
 
@@ -146,3 +146,61 @@ def testCase3 ():
 
 
 testCase3()
+
+
+
+
+def closestToBuyer(order: Order):
+
+
+    buyerX = order.buyer.coordinates[0]
+    buyerY = order.buyer.coordinates[1]
+    closestLocation = ""
+    closestDistance = float('inf')
+    for warehouse in laptop.warehouses:
+        warehouseX = warehouse.coordinates[0]
+        warehouseY = warehouse.coordinates[1]
+
+        if(closestDistance > math.sqrt((buyerX-warehouseX) ** 2 + (buyerY-warehouseY) ** 2)):
+            closestDistance = math.sqrt((buyerX-warehouseX) ** 2 + (buyerY-warehouseY) ** 2)
+            closestLocation = warehouse.city
+        
+
+    return [closestLocation]
+
+
+def testCase1ClosestToBuyer ():
+
+    
+    buyer = Buyer(name= "Tom",
+              city= "Vancouver",
+              country= "Canada",
+              coordinates= [-2, 5])
+    
+    order = Order(buyer, "Laptop", 1)
+
+    print(closestToBuyer(order))
+
+
+testCase1ClosestToBuyer()
+
+
+
+#TEST case 2:
+
+def testCase2ClosestToBuyer ():
+
+    
+    buyer = Buyer(name= "Jack",
+                    city= "Paris",
+                    country= "France",
+                    coordinates= [15,-3])
+    
+    order = Order(buyer, "Laptop", 1)
+
+    print(closestToBuyer(order))
+
+
+testCase2ClosestToBuyer()
+
+
